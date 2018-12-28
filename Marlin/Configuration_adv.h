@@ -281,7 +281,7 @@
 
 // If you want endstops to stay on (by default) even when not homing
 // enable this option. Override at any time with M120, M121.
-//#define ENDSTOPS_ALWAYS_ON_DEFAULT
+#define ENDSTOPS_ALWAYS_ON_DEFAULT
 
 // @section extras
 
@@ -410,7 +410,7 @@
 // Default stepper release if idle. Set to 0 to deactivate.
 // Steppers will shut down DEFAULT_STEPPER_DEACTIVE_TIME seconds after the last move when DISABLE_INACTIVE_? is true.
 // Time can be set by M18 and M84.
-#define DEFAULT_STEPPER_DEACTIVE_TIME 120
+#define DEFAULT_STEPPER_DEACTIVE_TIME 60
 #define DISABLE_INACTIVE_X true
 #define DISABLE_INACTIVE_Y true
 #define DISABLE_INACTIVE_Z true  // set to false if the nozzle will fall down on your printed part when print has finished.
@@ -424,7 +424,7 @@
 // @section lcd
 
 #if ENABLED(ULTIPANEL)
-  #define MANUAL_FEEDRATE {50*60, 50*60, 4*60, 60} // Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE {120*60, 120*60, 18*60, 60}  // Feedrates for manual moves along X, Y, Z, E from panel
   #define ULTIPANEL_FEEDMULTIPLY  // Comment to disable setting feedrate multiplier via encoder
 #endif
 
@@ -744,7 +744,7 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define BABYSTEP_XY              // Also enable X/Y Babystepping. Not supported on DELTA!
   #define BABYSTEP_INVERT_Z false    // Change if Z babysteps should go the other way
@@ -978,7 +978,7 @@
  * Requires NOZZLE_PARK_FEATURE.
  * This feature is required for the default FILAMENT_RUNOUT_SCRIPT.
  */
-//#define ADVANCED_PAUSE_FEATURE
+#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate.
   #define PAUSE_PARK_RETRACT_LENGTH            2  // (mm) Initial retract.
@@ -1074,7 +1074,7 @@
   #define E4_SENSE_RESISTOR   91
   #define E4_MICROSTEPS       16
 
-#endif // TMC26X
+#endif
 
 // @section tmc_smart
 
@@ -1302,7 +1302,7 @@
   #define E4_OVERCURRENT  2000
   #define E4_STALLCURRENT 1500
 
-#endif // L6470
+#endif
 
 /**
  * TWI/I2C BUS
@@ -1502,8 +1502,8 @@
   #define USER_DESC_4 "Heat Bed/Home/Level"
   #define USER_GCODE_4 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
 
-  #define USER_DESC_5 "Home & Info"
-  #define USER_GCODE_5 "G28\nM503"
+  //#define USER_DESC_5 "Home & Info"
+  //#define USER_GCODE_5 "G28\nM503"
 #endif
 
 /**
